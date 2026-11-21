@@ -1,0 +1,322 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --brand-primary: #0f2942;
+  --brand-secondary: #163656;
+  --brand-accent: #047857;
+  --brand-accent-hover: #065f46;
+  --brand-highlight: #facc15;
+}
+
+[data-theme="forest-gold"] {
+  --brand-primary: #143326;
+  --brand-secondary: #1b4332;
+  --brand-accent: #b45309;
+  --brand-accent-hover: #92400e;
+  --brand-highlight: #fcd34d;
+}
+
+[data-theme="slate-indigo"] {
+  --brand-primary: #1e1b4b;
+  --brand-secondary: #312e81;
+  --brand-accent: #4338ca;
+  --brand-accent-hover: #3730a3;
+  --brand-highlight: #38bdf8;
+}
+
+[data-theme="crimson-charcoal"] {
+  --brand-primary: #1c1917;
+  --brand-secondary: #292524;
+  --brand-accent: #b91c1c;
+  --brand-accent-hover: #991b1b;
+  --brand-highlight: #fbbf24;
+}
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .font-mono-num {
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.bg-brand-primary {
+  background-color: var(--brand-primary);
+}
+.bg-brand-secondary {
+  background-color: var(--brand-secondary);
+}
+.bg-brand-accent {
+  background-color: var(--brand-accent);
+}
+.text-brand-highlight {
+  color: var(--brand-highlight);
+}
+
+@keyframes header-shimmer {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.22;
+  }
+  50% {
+    opacity: 0.14;
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+@keyframes header-aura {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes sidebar-kenburns {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.16) translate3d(-2%, -2%, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+.header-animated-bg {
+  background: linear-gradient(
+    115deg,
+    var(--brand-primary) 0%,
+    var(--brand-secondary) 42%,
+    var(--brand-accent) 70%,
+    var(--brand-primary) 100%
+  );
+  background-size: 220% 220%;
+  animation: header-aura 14s ease-in-out infinite;
+}
+
+.header-shimmer-sweep {
+  animation: header-shimmer 7.5s ease-in-out infinite;
+}
+
+.marquee-track {
+  display: inline-flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll 28s linear infinite;
+}
+
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.sidebar-bg-zoom-anim {
+  will-change: transform;
+  animation: sidebar-kenburns 22s ease-in-out infinite;
+}
+
+@keyframes login-kenburns {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.14) translate3d(-1.5%, -1%, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes login-orb-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.42;
+  }
+  50% {
+    transform: translate3d(18px, -14px, 0) scale(1.08);
+    opacity: 0.62;
+  }
+  100% {
+    transform: translate3d(-10px, 12px, 0) scale(0.96);
+    opacity: 0.45;
+  }
+}
+
+@keyframes login-motif-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0) rotate(1.5deg);
+  }
+}
+
+@keyframes login-divider-sheen {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.85;
+  }
+  75% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(220%);
+    opacity: 0;
+  }
+}
+
+.login-bg-zoom-anim {
+  will-change: transform;
+  animation: login-kenburns 24s ease-in-out infinite;
+}
+
+.login-orb-float {
+  will-change: transform, opacity;
+  animation: login-orb-drift 13s ease-in-out infinite alternate;
+}
+
+.login-orb-float-delayed {
+  will-change: transform, opacity;
+  animation: login-orb-drift 16s ease-in-out infinite alternate-reverse;
+}
+
+.login-motif-float {
+  will-change: transform;
+  animation: login-motif-float 9s ease-in-out infinite;
+}
+
+.login-divider-sheen {
+  will-change: transform, opacity;
+  animation: login-divider-sheen 5.5s ease-in-out infinite;
+}
+
+@keyframes login-border-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.login-border-flow {
+  background-size: 220% 220%;
+  animation: login-border-flow 8s ease-in-out infinite;
+}
+
+@keyframes mill-steam-rise {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.75);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.55;
+  }
+  70% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate3d(16px, -44px, 0) scale(1.75);
+    opacity: 0;
+  }
+}
+
+@keyframes truck-wheel-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.mill-steam-puff-1 {
+  will-change: transform, opacity;
+  animation: mill-steam-rise 3.2s ease-out infinite;
+}
+
+.mill-steam-puff-2 {
+  will-change: transform, opacity;
+  animation: mill-steam-rise 3.2s ease-out 1.1s infinite;
+}
+
+.mill-steam-puff-3 {
+  will-change: transform, opacity;
+  animation: mill-steam-rise 3.2s ease-out 2.1s infinite;
+}
+
+.truck-wheel-spin {
+  will-change: transform;
+  animation: truck-wheel-spin 0.65s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-animated-bg,
+  .header-shimmer-sweep,
+  .marquee-track,
+  .sidebar-bg-zoom-anim,
+  .login-bg-zoom-anim,
+  .login-orb-float,
+  .login-orb-float-delayed,
+  .login-motif-float,
+  .login-divider-sheen,
+  .login-border-flow,
+  .mill-steam-puff-1,
+  .mill-steam-puff-2,
+  .mill-steam-puff-3,
+  .truck-wheel-spin {
+    animation: none !important;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body,
+  html,
+  .dark body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .print-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+}

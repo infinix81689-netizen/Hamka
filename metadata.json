@@ -1,0 +1,6 @@
+{
+  "name": "FSK Sebawi Mill - Pembayaran TBS",
+  "description": "Aplikasi Offline & Online Perhitungan Pembelian dan Pembayaran TBS Sawit PT. Fajar Saudara Kusuma - Sebawi Mill dengan database.sql",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
